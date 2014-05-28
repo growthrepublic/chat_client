@@ -67,6 +67,41 @@ conversation_id = "53731fbb31373210bc8c0300"
 GrowthRepublicChatClient::V1::Message.for_conversation(conversation_id).page(1).per(5)
 ```
 
+### Pagination with Grape
+
+If you are using Grape to build the API exposing Chat API, then pagination can be achieved easily with `grape-kaminari` gem. Add it to your Gemfile:
+
+    gem 'grape-kaminari'
+
+And then execute:
+
+    $ bundle
+
+Sample endpoint that passes pagination headers to the end-user might look as follows:
+
+```
+module API
+  module V1
+    class Conversations < Grape::API
+      include Grape::Kaminari
+
+      # ... omitted for brevity
+
+      resource :conversations do
+        desc "Returns paginated list of user conversations."
+        paginate per_page: 10
+        get do
+          @conversations = GrowthRepublicChatClient::V1::Models::Conversation.for_user(@user.id)
+          paginate(@conversations)
+        end
+      end
+    end
+  end
+end
+```
+
+Beware that you do not have to explicitly use `page` and `per` scopes. They are called internally by `paginate` helper with values passed in params.
+
 ## Contributing
 
 1. Fork it ( https://github.com/growthrepublic/chat_client/fork )
