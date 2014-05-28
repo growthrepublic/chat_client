@@ -1,5 +1,7 @@
 # ChatClient
 
+[![Code Climate](https://codeclimate.com/github/growthrepublic/chat_client.png)](https://codeclimate.com/github/growthrepublic/chat_client)
+
 This gem wraps API of Growth Republic's [chat application](https://github.com/growthrepublic/chat). It has been created to make it easier to consume the API across multiple applications. It is very thin and provides two models under first API version. It supports pagination using Kaminari. It has been used from the API written in `Grape`. Check the examples below.
 
 ## Installation
