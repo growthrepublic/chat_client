@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = %[
     This gem wraps Chat API with easy to use models created by Her.
     It passes pagination details received from the Chat API using Kaminari.]
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/growthrepublic/chat_client"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
